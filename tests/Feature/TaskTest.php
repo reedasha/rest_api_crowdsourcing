@@ -58,12 +58,7 @@ class TaskTest extends TestCase
         $user = factory(User::class)->create(['role' => 0]);
         $token = $user->generateToken();
         $headers = ['Authorization' => "Bearer $token"];
-        $task = factory(Task::class)->create([
-            'title' => 'TEST',
-            'description' => "IPSUM",
-            'price' => 100,
-            'deadline' => 2012-06-29,
-        ]);
+        $task = factory(Task::class)->create();
 
         $this->json('DELETE', '/api/tasks/' . $task->id, [], $headers)
             ->assertStatus(204);

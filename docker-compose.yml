@@ -1,0 +1,27 @@
+version: '3'
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: task4
+    ports:
+      - 9876:80
+    volumes:
+      - .:/var/www
+    links:  
+      - mysql
+    environment:
+      DB_HOST: mysql
+      DB_DATABASE: task_temp
+      DB_USERNAME: newuser
+      DB_PASSWORD: password
+  mysql:
+    image: mysql:5.7
+    ports:
+      - 3307:3306
+    environment:
+      MYSQL_DATABASE: task_temp
+      MYSQL_USER: newuser
+      MYSQL_PASSWORD: password
+      MYSQL_ROOT_PASSWORD: 3274297da

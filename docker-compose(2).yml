@@ -1,0 +1,8 @@
+version: '2'
+  # We will use the latest docker-compose variant
+
+services:
+  webserver:
+    image: 'bitnami/apache:latest'
+    ports:
+      - '80:80'
